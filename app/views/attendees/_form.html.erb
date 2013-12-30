@@ -1,0 +1,13 @@
+<%= simple_form_for(@attendee) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, :autofocus => true %>
+  <%= f.input :email, :required => true %>
+  <%= f.input :company, :autofocus => true %>
+  <%= f.input :address1, :required => true %>
+  <%= f.input :address2, :required => true %>
+  <%= f.input :address1, :required => true %>
+  <%= f.input :city, :required => true %>
+  <%= f.input :state, :required => true %>
+  <%= f.input :zip, :required => true %><br/>
+  <%= f.button :submit, 'Add Attendee', :class => 'btn-primary' %>
+<% end %>

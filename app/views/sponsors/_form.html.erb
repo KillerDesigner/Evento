@@ -1,0 +1,10 @@
+<%= simple_form_for(@sponsor) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, :autofocus => true %>
+  <%= f.input :company, :autofocus => true %>
+  <%= f.input :email, :required => true %>
+  <%= f.input :phone, :required => true %>
+  <%= f.input :level, :autofocus => true %>
+  <%= f.input :amount, :autofocus => true %><br/>
+  <%= f.button :submit, 'Add Sponsor', :class => 'btn-primary' %>
+<% end %>

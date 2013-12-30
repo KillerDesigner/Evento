@@ -1,0 +1,11 @@
+<%= simple_form_for(@presentation) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, :autofocus => true %>
+  <%= f.input :topic, :autofocus => true %>
+  <%= f.input :description, :autofocus => true %>
+  <%= f.date_select :date, :required => true %><br/>
+  <%= f.time_select :start_time, :autofocus => true %><br/>
+  <%= f.time_select :end_time, :autofocus => true %>
+  <%= f.input :fee, :autofocus => true %><br/>
+  <%= f.button :submit, 'Add Presentation', :class => 'btn-primary' %>
+<% end %>

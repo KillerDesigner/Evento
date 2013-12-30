@@ -1,0 +1,11 @@
+<%= simple_form_for(@speaker) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, :autofocus => true %>
+  <%= f.input :title, :autofocus => true %>
+  <%= f.input :email, :required => true %>
+  <%= f.input :affiliation, :autofocus => true %>
+  <%= f.input :phone, :required => true %>
+  <%= f.input :short_background %>
+  <%= f.text_area :long_background %><br/>
+  <%= f.button :submit, 'Add Speaker', :class => 'btn-primary' %>
+<% end %>

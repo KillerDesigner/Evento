@@ -1,0 +1,34 @@
+<%# add navigation links to this file %>
+<% if user_signed_in? %>
+  <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
+<% else %>
+  <li><%= link_to 'Login', new_user_session_path %></li>
+<% end %>
+<% if user_signed_in? %>
+  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+<% else %>
+  <li><%= link_to 'Sign up', new_user_registration_path %></li>
+<% end %>
+<% if user_signed_in? %>
+  <% if current_user.has_role? :admin %>
+    <li><%= link_to 'Admin', admin_path %></li>
+  <% end %>
+<% end %>
+
+<% if user_signed_in? %>
+  <% if can? :create, Exhibit %>
+    <li><%= link_to "New Exhibit", new_exhibit_path %></li>
+  <% end %>
+  <% if can? :create, Attendee %>
+    <li><%= link_to "New Attendee", new_attendee_path %></li>
+  <% end %>
+  <% if can? :create, Speaker %>
+    <li><%= link_to "New Speaker", new_speaker_path %></li>
+  <% end %>
+  <% if can? :create, Presentation %>
+    <li><%= link_to "New Presentation", new_presentation_path %></li>
+  <% end %>
+  <% if can? :create, Sponsor %>
+    <li><%= link_to "New Sponsor", new_sponsor_path %></li>
+  <% end %>
+<% end %>

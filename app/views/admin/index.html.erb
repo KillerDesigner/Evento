@@ -1,0 +1,180 @@
+<h3>Users</h3>
+<div class="span8">
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Registered</th>
+      <th>Role</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.name, user %></td>
+      <td><%= user.email %></td>
+      <td><%= user.created_at.to_date %></td>
+      <td><%= user.roles.first.name.titleize unless user.roles.first.nil? %></td>
+      <td>
+        <a data-toggle="modal" href="#role-options-<%= user.id %>" class="btn btn-mini" type="button">Change role</a>
+        <%= render user %>
+      </td>
+      <td><%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') unless user == current_user %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>
+
+<h3>Exhibits</h3>
+<div class="span8">
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Exhibit Name</th>
+      <th>Created</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @exhibits.each do |exhibit| %>
+    <tr>
+      <td><%= link_to exhibit.name, exhibit %></td>
+      <td><%= exhibit.created_at.to_date %></td>
+      <td><%= exhibit.name.titleize unless exhibit.first.nil? %></td>
+      <td>
+        <a data-toggle="modal" href="#exhibit-options-<%= exhibit.id %>" class="btn btn-mini" type="button">Change Exhibit</a>
+        <%= render exhibit %>
+      </td>
+      <td><%= link_to("Delete Exhibit", exhibit_path(exhibit), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>
+
+<h3>Attendees</h3>
+<div class="span8">
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Attendee Name</th>
+      <th>Email</th>
+      <th>Registered</th>
+      <th>Exhibits</th>
+      <th>Presentations</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @attendees.each do |attendee| %>
+    <tr>
+      <td><%= link_to user.name, user %></td>
+      <td><%= attendee.email %></td>
+      <td><%= attendee.created_at.to_date %></td>
+      <td><%= attendee.first.name.titleize unless user.roles.first.nil? %></td>
+      <td>
+        <a data-toggle="modal" href="#attendee-options-<%= attendee.id %>" class="btn btn-mini" type="button">Change attendee</a>
+        <%= render attendee %>
+      </td>
+      <td><%= link_to("Delete Attendee", attendee_path(attendee), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') unless attendee == current_user %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>
+
+<h3>Speakers</h3>
+<div class="span8">
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Speaker Name</th>
+      <th>Email</th>
+      <th>Registered</th>
+      <th>Presentations</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @speakers.each do |speaker| %>
+    <tr>
+      <td><%= link_to speaker.name, speaker %></td>
+      <td><%= speaker.email %></td>
+      <td><%= speaker.created_at.to_date %></td>
+      <td><%= speaker.first.name.titleize unless speaker.first.nil? %></td>
+      <td>
+        <a data-toggle="modal" href="#speaker-options-<%= speaker.id %>" class="btn btn-mini" type="button">Change speaker</a>
+        <%= render speaker %>
+      </td>
+      <td><%= link_to("Delete Speaker", speaker_path(speaker), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') unless speaker == current_user %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>
+
+<h3>Presentations</h3>
+<div class="span8">
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Presentation Name</th>
+      <th>Created</th>
+      <th>Speakers</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @presentations.each do |presentations| %>
+    <tr>
+      <td><%= link_to presentation.name, presentation %></td>
+      <td><%= presentation.created_at.to_date %></td>
+      <td><%= presentation.name.titleize unless presentation.first.nil? %></td>
+      <td>
+        <a data-toggle="modal" href="#presentation-options-<%= presentation.id %>" class="btn btn-mini" type="button">Change Presentation</a>
+        <%= render presentation %>
+      </td>
+      <td><%= link_to("Delete Presentation", presentation_path(presentation), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>
+
+<h3>Sponsors</h3>
+<div class="span8">
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Sponsor Name</th>
+      <th>Email</th>
+      <th>Registered</th>
+      <th>Sponsoring</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @sponsors.each do |sponsor| %>
+    <tr>
+      <td><%= link_to sponsor.name, sponsor %></td>
+      <td><%= sponsor.email %></td>
+      <td><%= sponsor.created_at.to_date %></td>
+      <td><%= sponsor.first.name.titleize unless sponsor.first.nil? %></td>
+      <td>
+        <a data-toggle="modal" href="#role-options-<%= sponsor.id %>" class="btn btn-mini" type="button">Change Sponsor</a>
+        <%= render sponsor %>
+      </td>
+      <td><%= link_to("Delete Sponsor", sponsor_path(sponsor), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') unless sponsor == current_user %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>
