@@ -16,7 +16,7 @@ gem 'rolify'
 gem 'simple_form'
 gem 'simple_calendar'
 gem 'gon'
-gem 'paperclip'
+gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
 group :development do
   gem 'better_errors'
